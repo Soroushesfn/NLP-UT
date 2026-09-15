@@ -40,8 +40,6 @@ Here are the primary technical implementations explored across the course assign
 
 ## 📂 Repository Structure
 
-*(Note: Adjust the folders below to match your exact directory tree)*
-
 ```
 NLP-UT/
 ├── Assignment_1_Text_Profiling/
