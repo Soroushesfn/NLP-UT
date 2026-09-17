@@ -1,57 +1,41 @@
-# Natural Language Processing (NLP) — Course Implementations
+# Natural Language Processing Implementations
 
-[![University](https://img.shields.io/badge/University-University%20of%20Tehran-blue.svg)](https://ut.ac.ir/en)
-[![Topic](https://img.shields.io/badge/Domain-NLP%20%26%20Deep%20Learning-success.svg)](#)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blueviolet.svg)](https://www.python.org/)
+Course projects from the University of Tehran's Natural Language Processing course, organized as reproducible notebooks that progress from classical text processing to neural representation learning.
 
-This repository contains my personal implementations, code solutions, and practical experiments for the Natural Language Processing (NLP) course at the **University of Tehran**. 
+## Highlights
 
-Rather than just theoretical exercises, this repository focuses on hands-on engineering—ranging from fundamental text processing to fine-tuning large language models for Persian language tasks.
+- Built rule-based, BPE, and WordPiece tokenization workflows for Persian text.
+- Implemented N-gram language models with Laplace, backoff, and interpolation smoothing; interpolation reduced validation perplexity to **33.27** in the reported experiment.
+- Implemented logistic regression and Naive Bayes classifiers from scratch and evaluated them on spam and phishing-URL detection.
+- Implemented CBOW and Skip-gram with negative sampling, then trained a FastText-based neural news classifier that reached **85.8% test accuracy** and **85.75% macro F1**.
 
----
+## Repository structure
 
-## 🚀 Implemented Functions & Core Topics
+| Module | Topics | Main artifact |
+| --- | --- | --- |
+| `01-text-processing-and-language-modeling/` | Regex, edit distance, Persian tokenization, N-gram generation and smoothing | `text-processing-tokenization-ngram.ipynb` |
+| `02-classical-text-classification/` | Bag-of-words, from-scratch logistic regression and Naive Bayes, URL feature engineering | `classical-text-classification.ipynb` |
+| `03-neural-word-embeddings/` | CBOW, Skip-gram, negative sampling, FastText embeddings, MLP classification | `neural-word-embeddings.ipynb` |
 
-Here are the primary technical implementations explored across the course assignments:
+Each module keeps its notebook beside the data and saved artifacts it expects. Run a notebook with its module directory as the working directory so relative paths resolve correctly.
 
-### 1. Text Profiling & Preprocessing
-*   **Persian Text Normalization:** Custom pipelines for cleaning, tokenizing, and normalizing Persian text corpora using standard NLP libraries.
-*   **Statistical Profiling:** Extracting linguistic features, tracking n-gram frequencies, and mapping dataset distributions.
+## Setup
 
-### 2. Word Representation & Embeddings
-*   **Static Embeddings:** Implementation of traditional word vector models to capture baseline semantic relationships.
-*   **Contextual Embeddings:** Extracting dynamic, context-aware token representations using Transformer architectures.
-*   **Comparative Analysis:** Benchmarking the performance, strengths, and limitations of static versus contextual embeddings on downstream evaluation tasks.
-
-### 3. Model Fine-Tuning & Sentence Equivalence 
-*   **Sentence Pair Tasks:** Engineering pipelines to detect semantic similarity and equivalence between text pairs.
-*   **ParsBERT Fine-Tuning:** Adapting `HooshvareLab/bert-fa-base-uncased` on parallel datasets (e.g., ParsMap formal-informal pairs) to classify semantic relationships in Persian text.
-
----
-
-## 🛠 Tech Stack
-
-*   **Languages & Utilities:** Python
-*   **Deep Learning:** PyTorch, Hugging Face `transformers`
-*   **Data Processing:** Pandas, NumPy
-*   **Vectorization & ML:** Scikit-learn
-
----
-
-## 📂 Repository Structure
-
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+jupyter lab
 ```
-NLP-UT/
-├── Assignment_1_Text_Profiling/
-│   ├── preprocessing.py
-│   └── statistical_analysis.ipynb
-├── Assignment_2_Embeddings/
-│   ├── static_vs_contextual.ipynb
-│   └── vector_utils.py
-├── Assignment_3_ParsBERT_FineTuning/
-│   ├── dataset_loader.py
-│   ├── train_equivalence.py
-│   └── model_evaluation.ipynb
-├── requirements.txt
-└── README.md
-```
+
+Python 3.10 or newer is recommended. Some notebook cells are computationally intensive and benefit from a CUDA-capable PyTorch environment.
+
+## Notes on reproducibility
+
+- Random seeds used by individual experiments are preserved in the notebooks.
+- Reported metrics are retained in notebook outputs so results can be reviewed without rerunning long training jobs.
+- Saved tokenizers and model checkpoints are included for inspection and downstream evaluation.
+
+## Scope
+
+This repository is an educational portfolio of course implementations. The notebooks contain the original experimental reasoning and results, with presentation boilerplate removed for a cleaner public release.
